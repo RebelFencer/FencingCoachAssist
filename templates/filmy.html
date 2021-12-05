@@ -1,15 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="{% static 'nowy.css' %}">
 </head>
 <body>
-    <h2> Tu będą moje filmy </h2>
+    {% if filmy|length == 0 %}
+        <h2>Brak filmów w BD</h2>
+    {% else %}
+        <h2> Ilość filmów w bazie danych: {{ filmy|length }} </h2>
 
-    {% for film in filmy %}
-    <p> {{ film.tytul }} </p>
-    {% endfor %}
+        {% for film in filmy %}
+            <p> {{ film.tytul }} </p>
+        {% endfor %}
+    {% endif %}
+
+
 
 </body>
 </html>
