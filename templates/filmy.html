@@ -1,23 +1,31 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="{% static 'nowy.css' %}">
-</head>
-<body>
+{% extends 'glowny.html' %}
+
+{% block tytul %} Lista filmów {% endblock %}
+
+{% block strona %}
+
+    {% if user.is_authenticated %}
+        Witaj {{ user.username }}<br>
+        <a href="{% url 'logout'  %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login'  %}">Login</a>
+    {% endif  %}
+
+    <hr>
+
+    <a href="{% url 'nowy_film'  %}">Nowy film</a>  <!––film.id - nie musze przesyłać nowego argumentu -->
+
     {% if filmy|length == 0 %}
         <h2>Brak filmów w BD</h2>
     {% else %}
         <h2> Ilość filmów w bazie danych: {{ filmy|length }} </h2>
 
         {% for film in filmy %}
-            <p> {{ film.tytul }} </p>
+            <h3> {{ film }} </h3>
+            <p> {{ film.opis }} </p>
+            <a href="{% url 'edytuj_film' film.id %}">Edytuj</a>
+            <a href="{% url 'usun_film' film.id %}">Usun</a>
         {% endfor %}
     {% endif %}
 
-
-
-</body>
-</html>
+{% endblock %}

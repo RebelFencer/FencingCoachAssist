@@ -1,0 +1,12 @@
+{% extends 'glowny.html' %}
+
+{% block tytul %} Zaloguj {% endblock %}
+
+{% block strona %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Zaloguj</button>
+
+{% endblock %}
