@@ -1,4 +1,19 @@
 body    {
     padding: 2rem;
-    color: darkred;
+    color: black;
         }
+.film-plakat    {
+        width: 150px;
+        float: left;
+}
+.film-icon      {
+    font-size: 1.6rem;
+}
+
+.opis {
+    margin-left: 10px;
+}
+
+.card {
+    width: 36rem;
+}
